@@ -3,12 +3,15 @@ const friends = [];
 const newFriendInput = document.getElementById("amigo");
 const addFriendButton = document.querySelector(".button-add");
 const listFriends = document.getElementById("listaAmigos");
+const resultTag = document.getElementById("resultado");
+
+
 const addFriendToScreen = () => {
 	listFriends.innerHTML = "";
-	const fragment = document.createDocumentFragment(); 
+	const fragment = document.createDocumentFragment();
 	for (friend of friends) {
-        const li = document.createElement("li"); 
-        li.textContent = friend;
+		const li = document.createElement("li");
+		li.textContent = friend;
 		fragment.appendChild(li);
 	}
 	listFriends.appendChild(fragment);
@@ -25,4 +28,8 @@ const agregarAmigo = () => {
 	addFriendToScreen();
 };
 
-const sortearAmigo = () => {};
+const sortearAmigo = () => {
+    if (friends.length === 0) return;
+	const randomIdx = Math.floor(Math.random() * friends.length);
+    resultTag.innerHTML = friends[randomIdx];
+};
